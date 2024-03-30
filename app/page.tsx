@@ -191,7 +191,7 @@ export default function Home() {
       textDelivery.innerHTML = 'Please enter an amount'
 
       valid = false
-    } else if (deduction.match(regex) == null) {
+    } else if (deliveryFee.match(regex) == null) {
       setDeliveryValidation(false)
       textDelivery.innerHTML = 'Please enter a valid amount'
 
