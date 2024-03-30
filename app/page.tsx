@@ -205,9 +205,9 @@ export default function Home() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="flex flex-row">
-        <div className="w-1/3 fixed">
+    <div className="w-10/12 mx-auto lg:max-w-7xl">
+      <div className="flex flex-col lg:flex-row">
+        <div className="lg:w-1/3 lg:fixed">
           <h1 className="my-10 text-2xl">Split Bill Application</h1>
           <div className="flex flex-col mb-5">
             <label className="mb-1">Description</label>
@@ -215,27 +215,27 @@ export default function Home() {
             <p className="text-red-500 text-xs text-desc mt-1"></p>
           </div>
 
-          <div className="flex flex-row mb-10">
-            <div className="flex flex-col w-1/2 mr-10">
+          <div className="flex flex-col mb-10 lg:mb-5 lg:flex-row">
+            <div className="flex flex-col mb-5 lg:w-1/2 lg:mr-10">
               <label className="mb-1">Fullname</label>
               <input placeholder="John Doe" className="fullname border-b border-black px-3 py-1 bg-slate-100" onChange={(e) => setName(e.target.value)}/>
             </div>
 
-            <div className="flex flex-col w-1/2">
+            <div className="flex flex-col lg:w-1/2">
               <label className="mb-1">Amount</label>
               <input placeholder="100000" className={amountValidation ? "amount border-b border-black px-3 py-1 bg-slate-100" : "amount border-b border-red-500 px-3 py-1 bg-slate-100"} onChange={(e) => setAmount(e.target.value)}/>
               <p className="text-red-500 text-amount text-xs mt-1"></p>
             </div>
           </div>
 
-          <div className="w-full flex flex-row justify-between">
-            <button className="bg-black text-white px-3 py-2 rounded-full w-1/2 mb-3 hover:bg-white hover:text-black hover:border hover:border-black duration-100 mr-5" onClick={handleAddToList}>Add to List of Order</button>
-            <button className="bg-white text-black border border-black px-3 py-2 rounded-full w-1/2 mb-3 hover:bg-black hover:text-white hover:border hover:border-black duration-100" onClick={() => window.location.reload()}>Start New Order</button>
+          <div className="w-full flex flex-col lg:flex-row lg:justify-between">
+            <button className="bg-black text-white px-3 py-2 rounded-full w-full mb-3 hover:bg-white hover:text-black hover:border hover:border-black duration-100 mr-5 lg:w-1/2" onClick={handleAddToList}>Add to List of Order</button>
+            <button className="bg-white text-black border border-black px-3 py-2 rounded-full mb-3 hover:bg-black hover:text-white hover:border hover:border-black duration-100 w-full lg:w-1/2" onClick={() => window.location.reload()}>Start New Order</button>
           </div>
         </div>
 
 
-        <div className="my-10 w-2/3 ml-[50%]">
+        <div className="my-10 lg:w-2/3 lg:ml-[50%]">
           <h1 className="mb-2">List of Orders</h1>
 
           <hr />
@@ -257,13 +257,15 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-row justify-between items-center">
-                      <h3 className="text-base mr-10">Rp. {parseInt(a.amount).toLocaleString()}</h3>
+                      <h3 className="text-base lg:mr-10">Rp. {parseInt(a.amount).toLocaleString()}</h3>
 
-                      <div>
+                      <div className="hidden lg:block">
                         <button id={`${a.id}`} className={`bg-white border border-red-500 text-red-500 text-sm rounded-full py-2 px-3 hover:bg-red-500 hover:text-white duration-100 btn-${a.id}`} onClick={handleRemovePerson}>Remove</button>
                       </div>
                     </div>
+
                   </div>
+                  <button id={`${a.id}`} className={`block w-full mb-5 bg-white border border-red-500 text-red-500 text-sm rounded-full py-2 px-3 hover:bg-red-500 hover:text-white duration-100 btn-${a.id} lg:hidden`} onClick={handleRemovePerson}>Remove</button>
 
                   <hr />
                 </div>
@@ -277,23 +279,23 @@ export default function Home() {
             listOfOrder.length == 0 ? 
             <></>
             :
-            <div className="mt-5">
-              <div className="flex flex-row justify-between">
-                <div className="flex flex-col w-1/2 mr-10">
+            <div className="mt-10 lg:mt-5">
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:mt-0">
+                <div className="flex flex-col lg:w-1/2 lg:mr-10">
                   <label className="mb-1">Total Deduction</label>
                   <input placeholder="10000" className={deductionValidation ? "bg-slate-100 px-3 py-1 border-b border-black" : "bg-slate-100 px-3 py-1 border-b border-red-500"} onChange={(e) => setTotalDeduction(e.target.value)}/>
                   <p className="text-xs text-red-500 mt-1 text-deduct"></p>
                 </div>
-                <div className="flex flex-col w-1/2">
+                <div className="flex flex-col mt-5 lg:w-1/2 lg:mt-0">
                   <label className="mb-1">Delivery Fee</label>
                   <input placeholder="10000" className={deliveryValidation ? "bg-slate-100 px-3 py-1 border-b border-black" : "bg-slate-100 px-3 py-1 border-b border-red-500"} onChange={(e) => setDeliveryFee(e.target.value)}/>
                   <p className="text-xs text-red-500 mt-1 text-delivery"></p>
                 </div>
               </div>
 
-              <div className="mt-5 flex flex-row items-center">
-                <p className="w-3/4 text-sm">Are these all of your orders? Click calculate to finalize the split bill calculation.</p>
-                <button className="w-1/4 bg-black text-white px-3 py-1 rounded-full" onClick={handleCalculate}>Calculate</button>
+              <div className="mt-5 flex flex-col lg:flex-row lg:items-center">
+                <p className="lg:w-3/4 lg:mr-5 text-sm">Are these all of your orders? Click calculate to finalize the split bill calculation.</p>
+                <button className="w-full bg-black text-white px-3 py-1 rounded-full mt-4 lg:mt-0 lg:w-1/4" onClick={handleCalculate}>Split Bill</button>
               </div>
             </div>
           }
@@ -303,7 +305,7 @@ export default function Home() {
             calculate && listOfOrder.length != 0 ? 
             <div className="mt-10">
               <div className="mb-5 text-sm">
-                <h1>Percent Deduction / Person: {deductionPercentage}%</h1>
+                <h1>Percent Deduction: {deductionPercentage}%</h1>
                 <h1>Delivery Fee / Person: Rp. {parseInt(deliveryFeePerPerson).toLocaleString()}</h1>
               </div>
 
@@ -313,7 +315,7 @@ export default function Home() {
 
               {
                 listOfOrder.map((a) => (
-                  <div>
+                  <div key={a.id}>
                     <div className="flex flex-row justify-between items-center my-3">
                       <div className="flex flex-row">
                         <Image src={food} alt='food' width={50} height={50} className="rounded-full"/>
@@ -324,7 +326,7 @@ export default function Home() {
                       </div>
 
                       <div className="flex flex-row justify-between items-center">
-                        <h3 className="text-base mr-10">Rp. {(parseInt(a.amount) - (parseInt(a.amount) * parseInt(deductionPercentage) / 100) + parseInt(deliveryFeePerPerson)).toLocaleString()}</h3>
+                        <h3 className="text-base">Rp. {(parseInt(a.amount) - (parseInt(a.amount) * parseInt(deductionPercentage) / 100) + parseInt(deliveryFeePerPerson)).toLocaleString()}</h3>
                       </div>
                     </div>
 
@@ -343,6 +345,11 @@ export default function Home() {
       </div>
 
       
+      
+      <div className="w-10/12 mx-auto text-center text-sm absolute bottom-0 lg:max-w-7xl my-3">
+        <hr className="my-3"/>
+        Coded in Visual Studio Code. Built with Next.js and Tailwind CSS. &copy; {currentYear()}
+      </div>
     </div>
   );
 }
