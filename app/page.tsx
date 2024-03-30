@@ -343,13 +343,6 @@ export default function Home() {
           
         </div>
       </div>
-
-      
-      
-      <div className="w-10/12 mx-auto text-center text-sm absolute bottom-0 lg:max-w-7xl my-3">
-        <hr className="my-3"/>
-        Coded in Visual Studio Code. Built with Next.js and Tailwind CSS. &copy; {currentYear()}
-      </div>
     </div>
   );
 }
