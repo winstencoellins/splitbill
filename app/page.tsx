@@ -220,7 +220,7 @@ export default function Home() {
   return (
     <div className="w-10/12 mx-auto lg:max-w-7xl">
       <div className="flex flex-col lg:flex-row">
-        <div className="lg:w-1/3 lg:fixed">
+        <div className="lg:max-w-5xl lg:fixed">
           <h1 className="my-10 text-2xl">Split Bill Application</h1>
           <div className="flex flex-col mb-5">
             <label className="mb-1">Description</label>
@@ -248,7 +248,7 @@ export default function Home() {
         </div>
 
 
-        <div className="my-10 lg:w-2/3 lg:ml-[50%]">
+        <div className="my-10 lg:w-3/4 lg:ml-[50%]">
           <h1 className="mb-2">List of Orders</h1>
 
           <hr />
