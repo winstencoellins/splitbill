@@ -204,6 +204,19 @@ export default function Home() {
     return valid
   }
 
+  function totalSplitBill() {
+    let arr = listOfOrder
+    let total = 0
+
+    for (let i in arr) {
+      total += (parseInt(arr[i].amount) - (parseInt(arr[i].amount) * parseInt(deductionPercentage) / 100) + parseInt(deliveryFeePerPerson))
+    }
+
+    return (
+      <p className="text-right mt-2">Total Amount: Rp. {total.toLocaleString()}</p>
+    )
+  }
+
   return (
     <div className="w-10/12 mx-auto lg:max-w-7xl">
       <div className="flex flex-col lg:flex-row">
@@ -335,12 +348,13 @@ export default function Home() {
                 ))
               }
 
-
+              {
+                totalSplitBill()
+              }
             </div>
             :
             <></>
           }
-          
         </div>
       </div>
     </div>
